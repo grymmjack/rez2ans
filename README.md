@@ -1,7 +1,7 @@
 # rez2ans
 > Converts images to ANSI
 
-#### Discord: https://discord.gg/MZh2bsfR
+#### Discord: https://discord.gg/MZh2bsfR | Twitch: https://www.twitch.tv/sudden_death_thg
 
 ## Download
 - 💾 [rez2ans for Windows](https://github.com/grymmjack/rez2ans/releases/download/0.2b/rez2ans02b-Win32.zip)

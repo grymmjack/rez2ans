@@ -1,0 +1,1400 @@
+# rez2ans — Complete Documentation Package 📟⚡
+
+---
+
+# Preface & Legal Mumbo-Jumbo
+
+## About This Abomination
+
+rez2ans (a.k.a. rez2ansi) was coded by **Sudden Death**, an original member of the BBS/ANSI scene and co-founder of **Creators Of Intense Art** art group, with a frankly unreasonable amount of assistance from **Qwen30b LLM** (yes, an AI helped make software that makes art—wrap your head around that one). 
+
+Built in **FreePascal/Lazarus** for Windows and Linux, because some of us still believe in cross-platform desktop apps that don't require 47 Electron instances and a Small Business Server™ just to convert a PNG.
+
+This is the spiritual successor to **ansirez and ansicv22** and other scene tools.
+---
+
+## The Part Where Lawyers Get Nervous 🤡⚖️
+
+### FREE AS IN "TAKE IT, IT'S YOURS"
+This software is **100% free**. Free as in:
+- Free beer
+- Free kittens  
+- Free advice from your uncle at Thanksgiving
+- Free samples at Costco that become your lunch
+
+Use it. Abuse it. Make ANSI with it. Make a pack. Make a mess. We don't care.
+
+---
+
+### DISCLAIMER OF ALL THE THINGS
+
+**NO WARRANTIES. NO GUARANTEES. NO BACKSIES.**
+
+This software is provided "AS IS" with absolutely no warranty of any kind, express, implied, or hallucinated by an LLM during a training run. This includes but is not limited to:
+
+✗ **Fitness for any particular purpose** (including converting images to ANSI, which is literally its entire job)  
+✗ **Merchantability** (you can't sell this, and even if you could, who would buy it?)  
+✗ **Non-infringement** (we're pretty sure we own this, but hey, it's the internet)  
+✗ **That it will actually work** (it works on our machines sometimes...)  
+✗ **That it won't accidentally** turn your carefully composed photograph into what appears to be a Rorschach test made of shaded blocks  
+✗ **That F12 won't become your most-pressed key** (carpal tunnel not included)  
+✗ **That you won't spend 3 hours tweaking gamma by 0.02 increments** (you will)
+
+### THINGS THAT MIGHT HAPPEN
+- It might crash  
+- It might eat your RAM like Cookie Monster at a bakery  
+- It might produce output that looks nothing like your input  
+- It might produce output that looks *exactly* like your input but in 16 colors and you can't figure out why you bothered  
+- It might take up disk space (actual confirmed side effect)  
+- It might just sit there, mocking you, *working perfectly* but never quite achieving the exact aesthetic you have in your head from that one legendary pack from 1996  
+
+### VAPORWARE CLAUSE
+There is a non-zero chance this software is vaporware. Yes, you're reading documentation for it. Yes, there's allegedly a binary somewhere. But prove it exists in a meaningful ontological sense. We'll wait.
+
+### TECHNICAL SUPPORT
+Technical support is provided via:
+1. Reading these docs again
+2. Reading these docs *harder*
+3. Staring at the preview window until enlightenment occurs
+4. Asking someone on a BBS (if you can find one that's still up)
+5. Divination (tea leaves, tarot, VM core dumps)
+
+**We will not:**
+- Answer questions covered in the docs
+- Teach you what ANSI art is
+- Explain why your image of a sunset turned into abstract expressionism
+- Debug your 47-layer Photoshop file that you're trying to cram into 80 columns
+- Justify our life choices (or yours)
+
+---
+
+## WHAT YOU'RE AGREEING TO BY USING THIS
+
+By running rez2ans, you acknowledge:
+
+✓ You have read this disclaimer (or at least skimmed it while nodding)  
+✓ You understand that "alpha" means "probably has bugs"  
+✓ You accept that CP437 is objectively the best character set ever devised  
+✓ You will not hold us responsible if your ANSI doesn't win ANSI of the Year (but congrats if it does)  
+✓ You understand that 16 colors is simultaneously a limitation and a spiritual practice  
+✓ You will not email us asking why there's no "undo" button (Ctrl+Z your life choices elsewhere)  
+✓ The only guarantee is that hitting Alt+R **will** nuke all your settings and you **will** forget you did it  
+
+---
+
+## IN CONCLUSION
+
+This software might work. It might not. It might turn your precious artwork into blocky glory. It might turn it into what appears to be a failed OCR scan of a telegram from 1952.
+
+**Either way, it's free, it's yours, and we tried.**
+
+Now go make some art. The BBS scene needs you.
+
+Or don't. We're disclaimers, not cops.
+
+---
+
+*— Sudden Death & The Qwen30b Collective*  
+*"Converting pixels to CP437 since [CURRENT_YEAR - 1]"*
+
+---
+
+**P.S.** If this software somehow becomes sentient and starts making its own ANSI art, that's between you and the software. We are not responsible for AI-generated BBS content. Though honestly? It'd probably be pretty sick.
+
+---
+---
+
+# TABLE OF CONTENTS
+
+1. [Getting Started — Main User Docs](#getting-started)
+2. [File & Render Tab](#file-render-tab)
+3. [Image Adjustments Tab](#image-adjustments-tab)
+4. [ANSI Art Tab (Glyphfit + Autoshade)](#ansi-art-tab)
+5. [PatchStyle Tab](#patchstyle-tab)
+6. [TronicShade + AnsiLab Deep Dive](#tronicshade-ansilab)
+
+---
+---
+
+<a name="getting-started"></a>
+# rez2ans — Getting Started (Main User Docs) 😎💾
+
+Welcome, scene traveler. rez2ans is a GUI tool for turning your PNG/JPG into 80xN CP437 goodness — exporting either:
+
+- ANSI: .ans / .ansi (BBS-ready)
+- TheDraw/PabloDraw BIN: .bin (classic editor format)
+
+Think of it as: open image → drag crop → render → save → post on the board like a legend.
+
+Heads-up: the build you've got literally identifies itself as "rez2ans v .01 Alpha". So yeah… it's a spicy alpha. Expect rough edges, but also vibes.
+
+---
+
+## Quickstart (the "get on the wire NOW" path)
+
+1) File → Open Image…
+2) Drag a selection box on the image (this defines your 80xN crop target).
+3) Pick your Mode, tweak the Gamma / Contrast / Saturation / Dither knobs.
+4) Smash F12 (Render).
+5) Save… (or Alt+S) → pick ANSI (.ans/.ansi) or BIN (.bin).
+
+If you forget step 2, the app will basically bark: "Open an image, drag a box to crop, then Render."
+
+---
+
+## Keyboard shortcuts (because real ones don't click menus)
+
+F12  — Render current mode (main "make it happen" key)  
+Alt+S — Save (ANSI/BIN)  
+Alt+R — RESET EVERYTHING to factory defaults (panic button)
+
+There's also a legacy Tronicshade render path mentioned as F11 in the codebase, but your day-to-day muscle memory is F12.
+
+---
+
+## The Layout (what you're looking at)
+
+At a high level you've got:
+
+- Left: Source image + your selection box (crop)
+- Right: Preview of the ANSI/BIN render (your future fame)
+- Controls for:
+  - Mode
+  - Palette
+  - Glyph set
+  - Dithering
+  - Image tuning (gamma/contrast/etc)
+  - Shaders / patchbooks / Tronicshade (advanced wizardry)
+
+You'll also see status text like:
+- Selection: (x,y) - (x,y) size=... px
+- Loaded: ... | Output: 80 x N | BIN bytes: ...
+
+---
+
+## Modes (choose your flavor of crunchy)
+
+rez2ans ships with a bunch of render modes:
+
+- hires — sharper detail, more "pixel decisions"
+- shades — shade/block driven, classic chunky ANSI feel
+- hybrid — mix of hires + shades (often a sweet spot)
+- cartoon — bolder simplification (good for line art / flat art)
+- colorbook — more stylized color treatment
+- glyphfit — tries harder to "fit" characters to shapes/texture
+- autoshader — leans into shader-assisted styling
+- tronicshade — a texture/style pass that can feel "dither-like" but character-driven
+
+Practical advice (scene-tested energy):
+- Photos → start with hybrid
+- Line art → try cartoon or shades
+- Pixel art → jump to ANSI Art Mode (see below)
+- Want stylized grit → tronicshade / autoshader
+
+---
+
+## ANSI Art Mode (pixel art enjoyers, assemble)
+
+There's a dedicated ANSI Art Mode aimed at ANSI-ish glyph workflows like:
+
+- ansiblocks
+- ansiblocks-pixel
+- "Load ANSI…" support (bring in an existing .ans / .ansi)
+
+Also includes Glyph-only options:
+- Glyph-only (characters only)
+- Glyph-only (keep existing colors; change characters only)
+
+That's super handy if you've already got a palette pass you like and just want to re-char the piece.
+
+---
+
+## "Color Hints" (teach it your palette like a wise sysop)
+
+Hints bias palette matching so pastel/saturated colors don't wash out.
+
+### The hint workflow
+1) Drag a selection on the image (left panel)
+2) Choose the ANSI color index you want it to be
+3) Click "Add hint from selection"
+
+There's also a Dropper mode:
+- Turn it on, then click the image preview to sample + create a hint.
+
+### Hint knobs you'll see
+- Hint tolerance (0..255)
+  How close a pixel has to be before it counts as "this hinted color".
+- Hint strength
+  How hard it pushes palette matching toward that ANSI color.
+- Options like:
+  - Use hints to build a temporary palette (VGAPAL)
+  - Refit hinted palette each pass (gentle)
+  - Post-fix colors using hints (final pass) (snaps FG/BG to hinted index if very close)
+
+When to use hints:
+- Skin tones turning into swamp green
+- Pastels getting murdered by the nearest ANSI neighbor
+- Logos needing exact brand-ish colors in the 16-color prison
+
+---
+
+## ANSIrez Mode (cleanup pass for less speckle, more "finished")
+
+ANSIrez Mode applies a post-quantization smoothing pass:
+
+- Filters: median, blend, brite, 4x4
+- Useful for: reducing pepper-noise, thickening thin lines a bit
+- Tradeoff: may soften detail (worth it often)
+
+Suggested starting knobs:
+- Brightness: 0.90–1.10
+- Gamma:      0.95–1.05
+- Contrast:   1.10–1.25
+- Saturation: 0.90–1.10
+
+If your render looks like it got faxed through a toaster, back off contrast and try median.
+
+---
+
+## Shaders, TronicShade styles, and Patchbooks (the black belt stuff)
+
+### Shader import (BIN/ANS)
+You can Import shader (BIN/ANS)… and/or Use shader BIN (curated FG/BG ramps).
+
+You'll see status like:
+- Shader: swatches=... pairs=... glyphPairs=... file=...
+
+There's also:
+- "Shader rows to read (top N rows)"
+  Useful if your shader file has multiple rows of swatches and you only want the top chunk.
+
+### Patchbook (learned style transfer)
+Patchbooks are like a stash of learned glyph/color pair vibes.
+
+You can:
+- Load patchbook…
+- Save patchbook…
+- Clear patchbook
+
+You may see:
+- Patchbook: learned from import
+- Or the app yelling: "Patchbook is empty. Import shader files first."
+
+### Tronicshade styles
+Tronicshade has its own style files:
+- Load a TronicShade/Shader style profile from the styles folder
+- Save as: *.tronic.json / *.tronic
+
+It can also:
+- Load ANSI into Tronicshade library (shade-only)
+
+If you're chasing a consistent "house look" across a pack, Tronicshade styles + patchbooks are your repeatability weapons.
+
+---
+
+## Export options (BBS hygiene: SAUCE, iCE, line endings)
+
+When saving ANSI, you'll typically have options like:
+
+### Formatting / compatibility
+- Trim trailing spaces (keeps lines from having pointless default cells)
+- ClearScreenHome (adds the classic ESC[2J + ESC[H at the start)
+- Line endings:
+  - CRLF (Windows)
+  - CR
+  - LF
+
+### SAUCE metadata (for the collectors and archivists)
+- Add SAUCE metadata
+- Title / Author / Group
+- Optional source comment (writes a comment like SOURCE: <file>)
+- Set iCE colors flag in SAUCE (bit0)
+  (Use this if you intend iCE behavior and want viewers to know.)
+
+### Convenience
+- Copy source image beside ANSI file as *_source.<ext>
+  Great for showing "before/after" in release zips.
+
+---
+
+## Common workflows (pick your mission)
+
+### 1) Photo → ANSI poster
+- Mode: hybrid
+- Dither: moderate
+- Contrast: 1.10–1.20
+- Optional: ANSIrez median to reduce speckle
+
+### 2) Pixel art → clean blocks
+- ANSI Art Mode
+- Try ansiblocks-pixel
+- If colors are sacred: Glyph-only (keep existing colors)
+
+### 3) "Make it look like that pack"
+- Import shader BIN/ANS
+- Let it learn patchbook
+- Save patchbook + Tronicshade style
+- Apply consistently across your set
+
+---
+
+## Troubleshooting (aka "why does it hate me?")
+
+- "Open an image first."
+  You didn't load an image.
+- Render looks wrong / off-color
+  Add Color Hints for the problem colors (logos/pastels).
+- Too noisy
+  Reduce dither strength, or enable ANSIrez (median/blend).
+- Patchbook won't save / is empty
+  Import shader files first so it has something to learn from.
+- Need maximum compatibility
+  Enable Clear screen + home, use CRLF, and add SAUCE.
+
+---
+
+## The vibe checklist ✅
+
+Before you ship it to the BBS:
+
+[ ] It's 80 columns wide (always)
+[ ] You've previewed it in something real (PabloDraw/TheDraw/SyncTerm/etc.)
+[ ] SAUCE is set (Title/Author/Group) for proper cred
+[ ] If it uses iCE tricks, you set the iCE flag
+[ ] You didn't accidentally Alt+R and nuke your perfect settings (RIP)
+
+---
+---
+
+<a name="file-render-tab"></a>
+# rez2ans — File & Render Tab 📁⚡
+
+Alright, caller. This is the **File & Render** tab — the "get pixels in / get ANSI out" control deck.
+If rez2ans is your BBS station, this tab is the **front panel switches**.
+
+---
+
+## What this tab is for
+Use **File & Render** to:
+
+- **Open** a source image (PNG/JPG/etc)
+- **Pick a crop** by dragging a box on the *source preview*
+- **Render Preview** (convert to 80xN cells)
+- **Save** the result as **ANSI** (`.ans/.ansi`) or **BIN** (`.bin`)
+- Manage **presets** (`.ini`) so you can reuse your perfect "house look" later
+
+---
+
+## Buttons row (top) — the "do stuff now" strip
+
+### **Open Image…**
+Loads an image into the left preview pane.
+
+- Supported filter: PNG/JPG/JPEG/BMP (and whatever your system image loader can read)
+- After opening, the status text will show:
+  - `Loaded: <filename> | (not rendered yet)`
+
+### **Render Preview**
+Runs the conversion using your current settings and updates the output preview.
+(Hotkey: **F12** also renders.)
+
+If you haven't made a crop yet, rez2ans will nudge you with:
+- `Open an image, drag a box to crop, then Render.`
+
+### **Save…**
+Exports the current render.
+
+- Default extension is **.ans** (ANSI export is more portable than BIN)
+- You can also save **.bin**
+- If you choose ANSI, an export options dialog usually appears (SAUCE/iCE/line endings etc.)
+
+Hotkey: **Alt+S**
+
+### **Clear Selection**
+Nukes your crop rectangle (sets selection back to none).
+
+### **Preview Font…**
+Lets you choose a custom font for the output preview **only**.
+It does **not** change the conversion — just how the preview draws characters.
+
+Important:
+- If **BIOS preview** is enabled, rez2ans will refuse font picking and tell you to disable BIOS preview first.
+
+### **BIOS preview**
+When enabled, output preview uses **BIOS 8x16** style preview logic.
+
+What it does in practice:
+- Locks preview "cell width" to clean multiples of 8 pixels (so it stays crisp)
+- Shows `Font: BIOS 8x16` in the font label
+- Great for classic DOS look, less great if you're testing weird fonts
+
+### **Load Preset…**
+Load a saved preset file:
+- `Preset (*.ini)`
+
+### **Save Preset…**
+Save your current UI/settings as a preset:
+- `Preset (*.ini)`
+
+Presets are how you keep "acid/hybrid/shader vibe" settings consistent across a whole set.
+
+---
+
+## Crop + sizing controls (left side of the tab)
+
+### **Render selection only** (checkbox)
+If enabled (default), rez2ans renders **only the crop box** you dragged on the source preview.
+
+- Checked + you have a valid selection → crop is used
+- Unchecked (or no selection) → rez2ans renders from the full image area (no crop)
+
+### **Rows (0=auto)** (spinbox)
+Forces the output height in text rows.
+
+- `0` = **auto** (rez2ans decides the number of rows based on your crop + settings)
+- `>0` = **forced** number of rows (useful if you're targeting a fixed layout)
+
+Think of this as: "how tall is my final ANSI?"
+
+### **CellW (pixels)** (spinbox)
+Controls the **preview scale** (not the conversion).
+
+It's literally "how wide should each character cell be in the output preview window?"
+
+- Normal preview: minimum ~4 px
+- BIOS preview: minimum 8 px and snaps to 8px steps
+- Cell height is drawn as ~2x CellW (keeps DOS-ish aspect)
+
+If the output preview looks tiny or huge, this is your zoom knob.
+
+---
+
+## The two info readouts (status text for humans)
+
+### **Info line**
+Shows load/render status like:
+- `Loaded: FILE.PNG | Output: 80 x 123 | BIN bytes: 19680`
+or
+- `Loaded: FILE.PNG | (not rendered yet)`
+
+### **Selection line**
+Shows crop box coordinates and size, like:
+- `Selection: (x,y) - (x,y) size=WxH px`
+or
+- `Selection: (none)`
+
+---
+
+## Where the actual cropping happens (source preview)
+The crop box is created by dragging on the **source preview pane** (left big image area):
+
+1) **Left-click + drag** on the source preview to draw a rectangle
+2) Release to set the selection
+3) Render Preview (or F12)
+
+Tiny drags (basically "clicks") are treated as no selection.
+
+Pro tip:
+- Right-click can be used in "hint dropper" mode (when enabled elsewhere) to exit that mode, but for normal cropping, just drag with left mouse.
+
+---
+
+## Output preview pane (right side)
+After rendering, the right preview shows the 80xN output using CP437 glyphs and ANSI 16-color preview.
+
+- It's scrollable if your ANSI is tall
+- Clicking the output preview may jump you into tile/glyph inspection features (depending on mode)
+
+---
+
+## Hotkeys (also shown in the bottom status bar)
+- **F12** — Render
+- **Alt+S** — Save (ANSI/BIN)
+- **Alt+R** — Reset defaults (big red "oops" button)
+
+---
+
+## Typical workflow (the "one-two punch")
+1) **Open Image…**
+2) Drag a crop box on the source preview
+3) (Optional) set **Rows** if you need a fixed height
+4) **Render Preview** (or **F12**)
+5) Adjust preview zoom with **CellW (pixels)**
+6) **Save…** (or **Alt+S**)
+7) Save a **Preset** if you want repeatable pack vibes
+
+---
+
+If you want, I can also write a tiny "quick cheatsheet" version of this tab (like a 30-line NFO-style quick ref).
+
+---
+---
+
+<a name="image-adjustments-tab"></a>
+# rez2ans — Image Adjustments Tab 🎛️🧪
+
+Welcome to the **Image Adjustments** tab — the place where you **tune the source image** before rez2ans turns it into CP437 glory.
+Think of it as your **pre-flight color lab**: you're not changing the final ANSI file directly… you're changing what the renderer *sees*.
+
+If your render looks:
+- washed out
+- too dark
+- muddy
+- neon-radioactive
+- "why is everything GREEN??"
+
+…this tab is where you fix it.
+
+---
+
+## What this tab affects (important)
+These sliders typically affect the **input image processing stage**:
+
+- They change the **working image** used for palette matching + glyph selection
+- They do **not** edit your original file on disk
+- They do **not** "draw" anything into the ANSI — they influence the renderer's decisions
+
+Rule of thumb:
+> Adjustments first → then Render (F12).
+
+---
+
+## The core knobs (the "four horsemen")
+
+### 1) Brightness
+Moves everything up/down.
+
+- Too dark render? bump brightness slightly.
+- Too bright / blown highlights? reduce a bit.
+
+**Good starting zone:** ~0.90–1.10
+
+Scene tip:
+- Brightness is your "global lift." Use it gently so you don't nuke contrast.
+
+---
+
+### 2) Gamma
+Changes midtones without smashing blacks/whites as hard as brightness.
+
+- If the render feels "flat" or "muddy," tweak gamma.
+- If shadows are crushed but highlights are fine, gamma is often the move.
+
+**Good starting zone:** ~0.95–1.05
+
+Scene tip:
+- Gamma is the secret "it suddenly reads better" slider.
+- Micro moves matter. Don't go full DJ-on-the-bass-knob.
+
+---
+
+### 3) Contrast
+Expands/compresses differences.
+
+- If output looks like fog → increase contrast.
+- If it looks like harsh posterization → decrease contrast.
+
+**Good starting zone:** ~1.10–1.25
+
+Scene tip:
+- Contrast helps the glyph solver find edges and structure,
+  but too much contrast can force ugly color jumps in ANSI-16 land.
+
+---
+
+### 4) Saturation
+Color intensity.
+
+- If it looks gray and sad → increase saturation.
+- If it looks like a laser tag arena → decrease saturation.
+
+**Good starting zone:** ~0.90–1.10
+
+Scene tip:
+- ANSI has only 16 colors (plus bright variants). Over-saturation can make palette matching freak out.
+- If colors are "wrong," try *lowering* saturation before doing anything fancy.
+
+---
+
+## Dither / diffusion controls (the "texture engine")
+Depending on your mode (hires/hybrid/shades/tronicshade/etc), you'll often see controls like:
+
+### Dither amount / strength
+How much "pattern" is introduced to simulate missing colors/shades.
+
+- Low: cleaner, but can band
+- High: more texture, but can sparkle/noise
+
+Use it when:
+- Smooth gradients band (increase dither)
+- The output looks like pepper spray (decrease dither)
+
+### Ordered dither (Bayer)
+Some modes use ordered patterns (Bayer4/Bayer8). Ordered dither looks more "grid intentional" than random noise.
+
+- Bayer4: more visible classic ANSI texture
+- Bayer8: smoother/less obvious
+
+---
+
+## How to use adjustments (fast workflow)
+1) Open image
+2) Drag crop
+3) Render once (F12) to see the baseline
+4) Adjust ONE knob at a time
+5) Render again (F12)
+6) When it's close, use tiny tweaks (0.02 steps feel huge)
+
+Pro move:
+- Make a preset once you find a "house look" that works for your typical sources.
+
+---
+
+## Common problems + fixes (the "why does it look like that??" guide)
+
+### "Everything is too dark / crushed"
+Try:
+- Brightness up a touch (1.05)
+- Gamma up slightly (1.02)
+- Contrast down if blacks are brutal
+
+### "Everything is washed out / no punch"
+Try:
+- Contrast up (1.15–1.25)
+- Gamma down slightly (0.98–0.95) if midtones are too airy
+
+### "Colors are wrong / weird ANSI swaps"
+Try:
+- Saturation down (0.90–0.95)
+- Then use **Color Hints** (in the hints area) for problem colors (logos, skin tones)
+
+### "Too speckly / noisy"
+Try:
+- Dither amount down
+- Or use ANSIrez / TronicShade settle passes (depending on your mode)
+
+### "Banding in gradients"
+Try:
+- Increase dither amount a bit
+- If you have Bayer options, try Bayer8 for smoother texture
+
+---
+
+## Suggested starting presets (quick cheats)
+These are safe "first try" values:
+
+### Photo-ish sources (hybrid/tronicshade)
+- Brightness: 1.00
+- Gamma: 1.00
+- Contrast: 1.15
+- Saturation: 1.00
+- Dither: moderate (don't overcook)
+
+### Line art / flat graphics
+- Brightness: 1.00
+- Gamma: 1.00
+- Contrast: 1.20–1.30
+- Saturation: 0.95–1.05
+- Dither: low-to-medium
+
+### Pastel-heavy images (easy to ruin in ANSI-16)
+- Brightness: 1.00
+- Gamma: 1.02
+- Contrast: 1.10–1.15
+- Saturation: 0.90–0.98
+- Then add Color Hints for key pastel tones
+
+---
+
+## Hotkeys / reminders
+- Render after changes: **F12**
+- Save output: **Alt+S**
+- Full reset to defaults (careful!): **Alt+R**
+
+---
+
+If you want, tell me what kind of images you're feeding rez2ans (photos / pixel art / logos / scans)
+and I'll write you a mini "starter preset" for Image Adjustments + your preferred render mode.
+
+---
+---
+
+<a name="ansi-art-tab"></a>
+# rez2ans — ANSI Art Tab 🖋️🧱  (Glyphfit + Autoshade ONLY)
+
+Yo. This tab is **ANSI Art** — but here's the important catch:
+
+> ✅ **ANSI Art is ONLY used by the `glyphfit` and `autoshade` modes.**  
+> If you're in **hires / shades / hybrid / tronicshade** and you're poking this tab like "why nothing happen?" …that's why. 😄
+
+Think of ANSI Art as the **glyph brain + rulebook** that those two modes consult while they're picking characters.
+
+---
+
+## What ANSI Art does (in plain BBS)
+ANSI Art controls:
+
+- **Which glyph sets are allowed** (blocks? shades? halfblocks? weird CP437 toys?)
+- **How hard it prefers certain glyph families** (clean blocks vs gritty shading)
+- **Whether it's allowed to use "glyph-only" approaches**
+- **How it interprets an imported ANSI** (for re-char / style anchoring)
+
+In other words:
+> Image comes in → `glyphfit`/`autoshade` ask ANSI Art:  
+> "What characters am I allowed to use, and what do you want me to favor?"
+
+---
+
+# 1) Mode dependency (don't fight the UI)
+### Works with:
+- ✅ **glyphfit**
+- ✅ **autoshade**
+
+### Not used by:
+- ❌ hires
+- ❌ shades
+- ❌ hybrid
+- ❌ tronicshade (has its own engine + style files)
+
+So: **pick glyphfit/autoshade first**, then come here.
+
+---
+
+# 2) ANSI Art Modes (typical options you'll see)
+
+## A) ansiblocks
+Classic block/halfblock-driven ANSI building blocks.
+Good for:
+- clean shapes
+- logos
+- chunky "scene pack" look
+
+## B) ansiblocks-pixel
+More pixel-art minded.
+Good for:
+- pixel sprites
+- crisp edges
+- avoiding "letter soup"
+
+## C) Load ANSI… (import existing .ans/.ansi)
+This lets you bring in a real ANSI file as a reference.
+What that can do:
+- bias glyph selection toward what the imported ANSI uses
+- enable "re-char" workflows (depending on options below)
+
+This is your:
+> "Make mine feel like THIS pack" button (especially for glyphfit/autoshade).
+
+---
+
+# 3) Glyph-only options (aka "re-char without repaint")
+
+You may see options like:
+
+## Glyph-only (characters only)
+The renderer focuses on picking characters; color handling becomes simpler or separate.
+
+## Glyph-only (keep existing colors; change characters only)
+This one is **gold** if you already have an ANSI with colors you like, and you want to:
+- keep FG/BG attributes
+- swap/upgrade characters to improve shading/detail
+
+Scene usage:
+- "My palette is perfect, but my glyphs are potato." → Use this.
+
+Important:
+- This is most meaningful when you've **loaded an ANSI** as a base/reference.
+
+---
+
+# 4) Glyph set selection (the "allowed alphabet")
+ANSI Art usually lets you choose (or implies) a glyph set. Common families:
+
+### Blocks
+- █ full block, and friends
+- makes output bold and clean
+
+### Shades
+- ░▒▓ (and █)
+- makes output "textured" but controlled
+
+### Half-blocks / partial blocks
+- ▀▄▌▐ and similar
+- gives smoother edges + more pseudo-resolution
+
+### Extended CP437 glyphs
+- can add detail, but also risk "glyph salad" if overused
+
+**Rule of thumb:**
+- Want **clean** → blocks + limited shades
+- Want **grit** → shades + halfblocks
+- Want **pixel** → ansiblocks-pixel
+- Want **max detail** → glyphfit + broader glyph set (careful)
+
+---
+
+# 5) How glyphfit uses ANSI Art (why it matters)
+`glyphfit` is the "shape matching" mode:
+- It tries to choose characters whose **pixel pattern** matches the source structure in each cell.
+- ANSI Art decides which patterns are on the menu.
+
+If you allow tons of glyphs:
+- it can match detail better
+- but can get noisy / inconsistent
+
+If you constrain to blocks/shades:
+- it looks cleaner and more "ANSI scene"
+- but you lose micro-detail
+
+So ANSI Art is basically your:
+> "Clean vs detail" lever for glyphfit.
+
+---
+
+# 6) How autoshade uses ANSI Art (why it matters)
+`autoshade` is the "stylize with shading rules" mode:
+- It leans into shade/block logic and tries to make lighting/texture coherent.
+- ANSI Art determines the shading vocabulary (░▒▓█ vs halfblocks etc.).
+
+If autoshade output looks:
+- too grainy → reduce allowed glyph variety (favor shades over random CP437)
+- too blocky → allow more halfblocks, or reduce strict block preference
+- too flat → allow more shade levels (░▒▓), raise diffusion/dither a bit
+
+---
+
+# 7) Practical recipes (fast wins)
+
+## Recipe: Clean logo / poster
+- Mode: **autoshade** or **glyphfit**
+- ANSI Art: **ansiblocks**
+- Limit glyphs to: blocks + small shade set
+- Dither/diffusion: low
+Result: bold, clean, pack-friendly.
+
+## Recipe: Pixel art sprite
+- Mode: **glyphfit**
+- ANSI Art: **ansiblocks-pixel**
+- Keep glyph set tight (avoid fancy CP437)
+- Dither: low-to-medium
+Result: crisp edges, less weird glyph noise.
+
+## Recipe: Re-char an existing ANSI (keep colors)
+- Mode: **glyphfit**
+- Load ANSI…
+- Enable **Glyph-only (keep existing colors)**
+- Render + tweak glyph constraints
+Result: palette stays; characters get upgraded.
+
+---
+
+# 8) Gotchas (aka "why is it acting weird?")
+
+### "ANSI Art tab does nothing"
+You're not in **glyphfit/autoshade**.
+
+### "Output is full of weird symbols"
+Your glyph set is too broad. Tighten it to blocks/shades.
+
+### "Looks noisy / shimmering"
+Reduce dither/diffusion and/or restrict glyph variety.
+(Then render again.)
+
+### "Not matching the imported ANSI vibe"
+Try:
+- loading a different ANSI reference (same "crew style")
+- using glyph-only options
+- tightening glyph sets to match the reference's vocabulary
+
+---
+
+# Hotkeys reminder
+- Render: **F12**
+- Save: **Alt+S**
+- Reset defaults: **Alt+R** (careful, it wipes your magic sauce)
+
+---
+
+If you want, tell me what you're aiming for (toon clean / gritty / pixel),
+and I'll write a **two-minute ANSI Art setup**: which mode, which glyph set, and which toggles to flip.
+
+---
+---
+
+<a name="patchstyle-tab"></a>
+# rez2ans — PatchStyle Tab 🧩🎨  (a.k.a. "Patchbook Style Transfer")
+
+PatchStyle is where rez2ans stops being "just a converter" and starts doing **style theft** (the good kind).
+It lets you **apply a learned patchbook** (tiny chunks of real ANSI/BIN) onto your render so it comes out
+more like a **pack look** instead of "generic image-to-ANSI."
+
+**In-universe:** you feed it a reference style (via shader/ANSI/BIN imports), it learns a stash of patterns,
+then it *stamps similar patterns* onto your new art.
+
+---
+
+## What PatchStyle actually does
+PatchStyle takes your already-rendered cell grid (80xN) and runs a **multi-scale patch matching pass**:
+
+- It breaks the screen into overlapping **patch windows** (in *cell space*).
+- For each window it computes a simple **signature** of the region (rough tone/luma pattern).
+- It searches the patchbook for the **closest signature match**.
+- If the match is good enough, it **applies the patch**:
+  - either **Full** (glyphs + colors)
+  - or **Glyph-only** (glyphs only, keep your colors)
+
+Patch sizes are typically:
+- **10x10** (big structure)
+- **5x5** (mid structure)
+- **3x3** (micro texture)
+
+And it can repeat the cycle: **10 → 5 → 3** for multiple loops.
+
+Scene translation:
+> 10 fixes the big shapes, 5 tightens it up, 3 sprinkles the texture.
+
+---
+
+## IMPORTANT: Where PatchStyle is used
+PatchStyle is designed for the **GlyphFit / AutoShade pipeline**.
+So it's most meaningful when your conversion mode is:
+- ✅ **glyphfit**
+- ✅ **autoshade**
+
+If you're living in **tronicshade**, PatchStyle is usually not the main course (TronicShade has its own library/passes).
+Still, PatchStyle is its own thing: it needs a patchbook to do anything.
+
+---
+
+# Patchbook 101 — where do patches come from?
+PatchStyle needs a **patchbook** (learned patches). You get it by:
+
+### A) Importing style reference files (recommended)
+Import shader/ANSI/BIN reference files in the shader tooling.
+When you import, rez2ans can **learn patches from the imported grid** automatically.
+
+If Patchbook is empty, rez2ans will basically tell you:
+> "Patchbook is empty. Import shader files first."
+
+### B) Loading a saved patchbook
+If you already have one, use:
+- **Load Patchbook…**
+
+### C) Saving your current patchbook
+Once you've got a good one:
+- **Save Patchbook…**
+so you can reuse it across releases.
+
+### D) Clearing it (start fresh)
+- **Clear Patchbook**
+Wipes it back to empty.
+
+---
+
+# PatchStyle controls (what the knobs mean)
+
+## 1) Enable PatchStyle
+**PatchStyle Enabled** (checkbox)
+
+- OFF: patchbook is ignored (no style transfer)
+- ON: patch matching runs after the initial render
+
+If this is ON but your patchbook is empty, nothing happens.
+
+---
+
+## 2) Patch sizes (10 / 5 / 3)
+These checkboxes decide which patch scales are allowed:
+
+### ✅ Use 10x10
+- Big "macro" chunks (strong style identity)
+- Can enforce chunky shapes / big shading regions
+- Heavier pass (more noticeable influence)
+
+### ✅ Use 5x5
+- Mid-scale structure
+- Often the "sweet spot" for making things feel like the reference pack
+
+### ✅ Use 3x3
+- Micro texture / stipple / shading flavor
+- Great for consistent grain, can also introduce noise if overused
+
+**Recommended defaults:**
+- Start with **5 + 3**
+- Add **10** if you want the style to hit harder
+
+---
+
+## 3) Loops (how many times it runs)
+**Loops** = number of **10 → 5 → 3 cycles**.
+
+- 1 loop: subtle, safer
+- 2–3 loops: stronger "pack look"
+- 4+ loops: can overcook / start bulldozing detail
+
+Rule of thumb:
+> If it looks "too forced," reduce loops.
+
+---
+
+## 4) Min Match % (signature threshold)
+**Min Match %** controls how strict PatchStyle is about applying a patch.
+
+- Higher % = only apply when it's very similar (safer, fewer wrong stamps)
+- Lower % = apply more often (stronger style transfer, more risk)
+
+Think of it as:
+> "How confident do we need to be before we slap a patch down?"
+
+Suggested ranges:
+- **80–90%**: conservative, clean
+- **70–80%**: medium aggression (often good)
+- **<70%**: spicy — can get "wrong texture in wrong places"
+
+---
+
+## 5) Apply Mode (what gets stamped)
+Usually a radio group like:
+
+### **Full (glyph + colors)**
+PatchStyle overwrites:
+- glyphs (characters)
+- attributes (FG/BG colors)
+
+This is the most intense style transfer.
+Great when you want the reference pack's *color behavior* too.
+
+Risk:
+- can shift colors away from your intended palette match
+
+### **Glyph-only**
+PatchStyle overwrites:
+- glyphs only
+
+Your colors stay as rendered (from your current conversion settings).
+Great when you like your colors, but want the reference *texture/glyph vocabulary*.
+
+This is the "safer scene" mode.
+
+---
+
+## 6) Blocks/Shades only (the "no punctuation" filter)
+**Blocks/Shades only** keeps the patchbook restricted to:
+- space
+- ░ ▒ ▓ █  (CP437 176/177/178/219)
+
+Why you'd do this:
+- you want PatchStyle to guide *shading ramps* only
+- you do NOT want it importing random texture glyphs / punctuation into your output
+
+This is super good for:
+- clean pack looks
+- avoiding "glyph salad"
+- keeping PatchStyle from turning faces into keyboard vomit
+
+Note:
+- If you load a patchbook and this is enabled, rez2ans can filter it immediately.
+
+---
+
+# The patch info label (what it's telling you)
+You'll typically see status like:
+- `Patchbook: (empty)`
+- `Patchbook: loaded`
+- `Patchbook: loaded (blocks/shades only)`
+
+If it's empty, PatchStyle has no ammo.
+
+---
+
+# Practical recipes (dial sheets)
+
+## Recipe: "Make it look like the reference pack" (strong transfer)
+- Apply Mode: **Full**
+- Use: **10 + 5 + 3**
+- Loops: **2**
+- Min Match: **75–85**
+- Blocks-only: OFF (unless the reference uses mostly shades/blocks)
+
+## Recipe: "Keep my colors, steal the texture" (safe + clean)
+- Apply Mode: **Glyph-only**
+- Use: **5 + 3**
+- Loops: **1–2**
+- Min Match: **80–90**
+- Blocks-only: ON (often)
+
+## Recipe: "Just smooth shading ramps" (no weird glyphs)
+- Apply Mode: **Glyph-only**
+- Use: **3 only** (or 5+3)
+- Loops: **1**
+- Min Match: **85–95**
+- Blocks-only: ON
+
+---
+
+# Troubleshooting (aka "why is it not doing anything?")
+
+### "PatchStyle enabled but nothing changes"
+- Patchbook is empty → import shader/ANSI/BIN references first, or load a patchbook file.
+
+### "It's stamping wrong textures in weird spots"
+- Raise **Min Match %**
+- Reduce **Loops**
+- Try **Glyph-only**
+- Consider **Blocks-only** to prevent punctuation/texture glyphs
+
+### "Colors got wrecked"
+- You're probably in **Full** mode → switch to **Glyph-only**
+- Or tighten Min Match so fewer patches overwrite attrs
+
+### "It got too same-y / overfitted"
+- Reduce Loops
+- Disable 10x10 (macro stamping can bulldoze variety)
+
+---
+
+# Hotkeys reminder
+- Render: **F12**
+- Save: **Alt+S**
+- Reset defaults: **Alt+R** (careful—wipes your sauce)
+
+---
+
+If you tell me what style you're chasing (toon clean / gritty halfblocks / shade-ramp smooth),
+I can suggest a PatchStyle setup that hits it without trashing detail.
+
+---
+---
+
+<a name="tronicshade-ansilab"></a>
+# rez2ans — TronicShade + AnsiLab Deep Dive 😈💾
+
+This doc goes deeper on rez2ans's two "secret sauce" systems:
+
+- TronicShade: the solver + style engine that makes output feel like real ANSI.
+- AnsiLab: the trainer that learns a pack's "house look" and writes presets.
+
+---
+
+## TronicShade — the "make it look like real ANSI" engine
+
+### What TronicShade is (in rez2ans terms)
+TronicShade is a rendering pipeline that outputs 80xN ANSI/BIN by:
+
+1) Sampling the source image at glyph-cell resolution (8x16-ish).
+2) Picking FG/BG colors (ANSI 16 palette, with candidate guidance).
+3) Picking a glyph biased toward shading + blocks (░▒▓█ plus half-blocks ▀▄ etc.).
+4) Running post-passes that reduce noise, preserve edges, and make shading flow.
+
+So it's not just "nearest ASCII." It's:
+image → cell grid → glyph+attr solve → style passes → output.
+
+---
+
+### The TronicShade "library" (style files)
+TronicShade can load style profiles (often *.tronic.json) that contain a library of swatches.
+
+Think of a swatch as:
+"If a cell's pixel-pattern looks like this, then this FG/BG + this shading mask is a good move."
+
+Example fields commonly found in a style:
+- blockW / blockH: neighborhood sizing for matching.
+- swatches: count of learned samples.
+- each swatch often has:
+  - fg / bg (0–15)
+  - bits: a 64-bit 0/1 mask (effectively an 8x8 pattern)
+  - stamp: a weight/score value
+
+Style profiles also include vibe parameters like:
+- blockStrength: how hard it leans into chunky block structure
+- edgeKeep: how much it protects edges from being smeared
+- verticalSmear: allowance for vertical blending
+
+Translation: the style file is a taste profile. Load a different one and the same image can render with a different crew aesthetic.
+
+---
+
+### The big TronicShade knobs (what they really do)
+
+#### 1) Strength (how hard we force the vibe)
+- Low: more literal, less stylized
+- High: more "it's going to look like ANSI no matter what"
+
+Crank it for:
+- more deliberate blocks
+- less photo-real mush
+- stronger identity
+
+#### 2) Ordered diffusion (Bayer4/Bayer8) + Diffusion Amount
+TronicShade uses ordered diffusion as a controlled luma offset.
+
+- Bayer4: more visible grid texture (classic ANSI dither vibe)
+- Bayer8: smoother, less blocky pattern
+
+Diffusion Amount is how much that ordered texture influences picking.
+Use it to reduce banding, but don't overcook the pattern.
+
+#### 3) AutoShader windowing (Window Size / Step)
+Builds a smoothed "tone target field" (lighting guide) that later passes use to keep texture coherent.
+
+Why you care:
+texture spans and reads like lighting, instead of confetti noise.
+
+#### 4) Histogram-guided palette candidates (Top N)
+Rather than considering every palette choice equally, it can use local histogram info to pick Top N likely candidates.
+
+Effect:
+- more stable choices
+- fewer "why THAT color??" moments
+
+---
+
+## TronicShade post-passes (where the magic gets finished)
+
+### A) Span Shade pass (texture that flows)
+This pass estimates local light direction from the tone field and nudges shading to follow it.
+
+- Skips strong-gradient areas (keeps sharp edges crisp)
+- Acts in solid-ish regions (where neighbors share attributes)
+- Uses an ordered threshold (Bayer) to vary shade levels nicely
+
+Result:
+shading looks like it follows form/light instead of static stipple.
+
+### B) Edge Shade pass
+Converts leftover half-block seams into shade texture where helpful, smoothing awkward boundaries.
+
+### C) Settle / Refine pass (the coherence loop)
+Heavy cleanup pass that tries to reduce shimmer and speckle while protecting edges.
+
+What it tends to do:
+- prefers a shade/block glyph set (space, ░▒▓█, half-blocks)
+- samples the source inside each cell (8x16) to compare decisions
+- uses coherence forces: BG stability, attr stability, run continuity, "stickiness"
+
+Iteration count often increases with higher TronicShadeWeight.
+
+---
+
+## TronicShadeWeight (the sleeper MVP)
+This roughly controls how much settle/refine happens.
+
+- Low: raw solver texture, more noise/sparkle
+- High: stronger coherence, smoother and more "finished"
+
+If output is:
+- too noisy → raise ShadeWeight
+- too smeary → lower ShadeWeight (or increase edgeKeep via style)
+
+---
+
+## Practical "scene recipes" for TronicShade
+
+### TOON / posterized pack look
+- Strength: ~120–150
+- Diffusion Amount: ~40–55
+- ShadeWeight: ~80–110
+- BlockThreshold: higher (more willingness to place █ cleanly)
+
+### DEATH / gritty / textured
+- Strength: ~180–200
+- Diffusion Amount: ~60–75
+- ShadeWeight: ~130–160
+- BlockThreshold: lower (more half-block/shade structure)
+
+---
+
+# AnsiLab — teach rez2ans what your favorite ANSI tastes like
+
+## What AnsiLab does
+AnsiLab is a training / preset builder.
+
+You feed it one or more ANSI files (or imports) and it can:
+1) Import them into TronicShade's library (learn patterns).
+2) Import them into the shader system (better priors).
+3) Compute training stats: how many cells are space, █, ░▒▓, half-block directions, etc.
+4) Save outputs:
+   - a Tronic style file (learned vibe)
+   - a shader profile
+   - an AnsiLab manifest (*.ansilab.json)
+   - a preset (*.preset.ini) that sets recommended defaults
+
+In English:
+"I want it to come out like that pack" → AnsiLab writes a preset that makes it do that.
+
+---
+
+## AnsiLab options (what they mean)
+
+### Treat blink as iCE (or bright BG)
+Decides how AnsiLab interprets blink in training files so it doesn't learn illegal or unintended BG choices.
+
+### MirrorH
+Learns mirrored patterns too (helps symmetry and reduces directional bias).
+
+### Learn shade-only
+Very important: learns only shade/block glyphs (avoids "training on text letters").
+
+### MaxRows
+Limit how deep into tall files it learns.
+
+### Passes
+Multiple directional passes so learning isn't biased to one scan direction.
+
+### Weight + DedupeCap
+- Weight: contribution strength per file
+- DedupeCap: prevents one repeated patch from dominating the library
+
+---
+
+## The fun part: AnsiLab's auto-recommended settings
+AnsiLab computes rough pack DNA from ratios like:
+- shadePct = % of ░▒▓
+- fullPct = % of █
+- halfPct = % of half-block directions
+
+Then it can recommend TronicShade defaults:
+
+### "Toon-ish" heuristic
+If shadePct < 1% AND fullPct > 45%:
+- Strength ~130
+- Diffusion ~45
+- ShadeWeight ~90
+- BlockThreshold ~65
+
+### "Death-ish / gritty" heuristic
+If shadePct >= 2.5% AND halfPct >= 25%:
+- Strength ~200
+- Diffusion ~70
+- ShadeWeight ~140
+- BlockThreshold ~48
+
+### Otherwise (middle/default)
+- Strength ~170
+- Diffusion ~60
+- ShadeWeight ~120
+- BlockThreshold ~55
+
+So AnsiLab is literally reading the pack DNA and dialing TronicShade accordingly.
+
+---
+
+## Suggested workflow
+1) Open AnsiLab tab
+2) Name preset (e.g., "toonpack_clean" or "gritdeath_halfblocks")
+3) Usually enable: Shade-only, MirrorH
+4) Decide blink interpretation (depends on training ANSI)
+5) Set passes (3 is a good start) and dedupe cap (4 is sane)
+6) Build
+7) Apply the generated preset and render your images through it
+
+Result: consistent "house style" output — perfect for packs/sets.
+
+---
+---
+
+# END OF DOCUMENTATION
+
+Thanks for using rez2ans. Now go make some art that'll make the sysops jealous.
+
+*— Sudden Death & The Qwen30b Collective*

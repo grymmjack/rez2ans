@@ -1,0 +1,145 @@
+object AnsiAdvForm: TAnsiAdvForm
+  Left = 0
+  Height = 360
+  Top = 0
+  Width = 420
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'ANSI Advanced'
+  ClientHeight = 360
+  ClientWidth = 420
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  object GroupBias: TGroupBox
+    Left = 8
+    Height = 110
+    Top = 8
+    Width = 404
+    Caption = 'Bias'
+    TabOrder = 0
+    object LabelBiasMode: TLabel
+      Left = 12
+      Height = 15
+      Top = 26
+      Width = 30
+      Caption = 'Mode'
+    end
+    object ComboBiasMode: TComboBox
+      Left = 120
+      Height = 23
+      Top = 22
+      Width = 260
+      ItemHeight = 15
+      TabOrder = 0
+      Text = 'None'
+    end
+    object LabelBiasStrength: TLabel
+      Left = 12
+      Height = 15
+      Top = 58
+      Width = 46
+      Caption = 'Strength'
+    end
+    object TrackBiasStrength: TTrackBar
+      Left = 120
+      Height = 24
+      Top = 54
+      Width = 260
+      Max = 100
+      TabOrder = 1
+    end
+  end
+  object GroupLuma: TGroupBox
+    Left = 8
+    Height = 120
+    Top = 126
+    Width = 404
+    Caption = 'Luminance Bucketing'
+    TabOrder = 1
+    object CheckLumaBucket: TCheckBox
+      Left = 12
+      Height = 19
+      Top = 24
+      Width = 118
+      Caption = 'Enable bucketing'
+      TabOrder = 0
+      OnChange = CheckLumaBucketChange
+    end
+    object LabelBucketStrength: TLabel
+      Left = 12
+      Height = 15
+      Top = 54
+      Width = 46
+      Caption = 'Strength'
+    end
+    object TrackBucketStrength: TTrackBar
+      Left = 120
+      Height = 24
+      Top = 50
+      Width = 260
+      Max = 100
+      TabOrder = 1
+    end
+    object LabelBucketThreshold: TLabel
+      Left = 12
+      Height = 15
+      Top = 88
+      Width = 49
+      Caption = 'Threshold'
+    end
+    object SpinBucketThreshold: TSpinEdit
+      Left = 120
+      Height = 23
+      Top = 84
+      Width = 80
+      MaxValue = 255
+      MinValue = 0
+      TabOrder = 2
+      Value = 128
+    end
+  end
+  object GroupChroma: TGroupBox
+    Left = 8
+    Height = 70
+    Top = 254
+    Width = 404
+    Caption = 'Chroma'
+    TabOrder = 2
+    object LabelChromaPenalty: TLabel
+      Left = 12
+      Height = 15
+      Top = 28
+      Width = 92
+      Caption = 'Saturation penalty'
+    end
+    object TrackChromaPenalty: TTrackBar
+      Left = 120
+      Height = 24
+      Top = 24
+      Width = 260
+      Max = 100
+      TabOrder = 0
+    end
+  end
+  object BtnOK: TButton
+    Left = 240
+    Height = 28
+    Top = 326
+    Width = 80
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 3
+  end
+  object BtnCancel: TButton
+    Left = 332
+    Height = 28
+    Top = 326
+    Width = 80
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 4
+  end
+end
+

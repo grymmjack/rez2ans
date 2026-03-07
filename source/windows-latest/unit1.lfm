@@ -1,0 +1,971 @@
+object MainForm: TMainForm
+  Left = 2130
+  Height = 900
+  Top = 75
+  Width = 1400
+  Caption = 'rez2ans'
+  ClientHeight = 900
+  ClientWidth = 1400
+  Position = poScreenCenter
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnResize = FormResize
+  object Panel1: TPanel
+    Left = 0
+    Height = 48
+    Top = 0
+    Width = 1400
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 48
+    ClientWidth = 1400
+    TabOrder = 0
+    object BtnOpen: TButton
+      Left = 12
+      Height = 28
+      Top = 10
+      Width = 84
+      Caption = 'Open...'
+      TabOrder = 0
+      OnClick = BtnOpenClick
+    end
+    object FitCheck: TCheckBox
+      Left = 110
+      Height = 19
+      Top = 14
+      Width = 115
+      Caption = 'Fit to view on load'
+      Checked = True
+      State = cbChecked
+      TabOrder = 1
+      OnChange = FitCheckChange
+    end
+    object LabelZoom: TLabel
+      Left = 280
+      Height = 15
+      Top = 16
+      Width = 66
+      Caption = 'Zoom: 100%'
+    end
+    object ZoomTrack: TTrackBar
+      Left = 370
+      Height = 30
+      Top = 9
+      Width = 160
+      Frequency = 5
+      Max = 125
+      Min = 25
+      PageSize = 5
+      Position = 100
+      OnChange = ZoomTrackChange
+      TabOrder = 2
+    end
+  end
+  object SourceGroup: TGroupBox
+    Left = 12
+    Height = 780
+    Top = 56
+    Width = 620
+    Caption = 'Source Image'
+    ClientHeight = 760
+    ClientWidth = 616
+    TabOrder = 1
+    object SourceScroll: TScrollBox
+      Left = 8
+      Height = 512
+      Top = 20
+      Width = 512
+      HorzScrollBar.Page = 512
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Page = 512
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      ClientHeight = 512
+      ClientWidth = 512
+      TabOrder = 0
+      object SourceImage: TImage
+        Left = 0
+        Height = 512
+        Top = 0
+        Width = 512
+        AutoSize = True
+        Center = True
+      end
+      object SourceOverlay: TPaintBox
+        Cursor = crCross
+        Left = 0
+        Height = 512
+        Top = 0
+        Width = 512
+        OnMouseDown = SourceOverlayMouseDown
+        OnMouseMove = SourceOverlayMouseMove
+        OnMouseUp = SourceOverlayMouseUp
+        OnPaint = SourceOverlayPaint
+      end
+    end
+    object ModsTabs: TPageControl
+      Left = 8
+      Height = 200
+      Top = 540
+      Width = 600
+      ActivePage = GroupBoxAnsi
+      TabIndex = 3
+      TabOrder = 1
+      object GroupBoxTone: TTabSheet
+        Caption = 'Tone'
+        ClientHeight = 172
+        ClientWidth = 592
+        object LabelRed: TLabel
+          Left = 8
+          Height = 15
+          Top = 10
+          Width = 7
+          Caption = 'R'
+        end
+        object LabelGreen: TLabel
+          Left = 8
+          Height = 15
+          Top = 40
+          Width = 8
+          Caption = 'G'
+        end
+        object LabelBlue: TLabel
+          Left = 8
+          Height = 15
+          Top = 70
+          Width = 7
+          Caption = 'B'
+        end
+        object LabelBrightness: TLabel
+          Left = 210
+          Height = 15
+          Top = 10
+          Width = 55
+          Caption = 'Brightness'
+        end
+        object LabelContrast: TLabel
+          Left = 210
+          Height = 15
+          Top = 40
+          Width = 45
+          Caption = 'Contrast'
+        end
+        object LabelGamma: TLabel
+          Left = 210
+          Height = 15
+          Top = 70
+          Width = 42
+          Caption = 'Gamma'
+        end
+        object LabelSaturation: TLabel
+          Left = 210
+          Height = 15
+          Top = 100
+          Width = 54
+          Caption = 'Saturation'
+        end
+        object TrackRed: TTrackBar
+          Left = 24
+          Height = 24
+          Top = 6
+          Width = 160
+          Max = 200
+          Min = 50
+          Position = 100
+          OnChange = ModsChange
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+        end
+        object TrackGreen: TTrackBar
+          Left = 24
+          Height = 24
+          Top = 36
+          Width = 160
+          Max = 200
+          Min = 50
+          Position = 100
+          OnChange = ModsChange
+          TabOrder = 1
+        end
+        object TrackBlue: TTrackBar
+          Left = 24
+          Height = 24
+          Top = 66
+          Width = 160
+          Max = 200
+          Min = 50
+          Position = 100
+          OnChange = ModsChange
+          TabOrder = 2
+        end
+        object TrackBrightness: TTrackBar
+          Left = 312
+          Height = 24
+          Top = 8
+          Width = 160
+          Max = 100
+          Min = -100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 3
+        end
+        object TrackContrast: TTrackBar
+          Left = 312
+          Height = 24
+          Top = 36
+          Width = 160
+          Max = 100
+          Min = -100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 4
+        end
+        object TrackGamma: TTrackBar
+          Left = 312
+          Height = 24
+          Top = 64
+          Width = 160
+          Max = 300
+          Min = 10
+          Position = 100
+          OnChange = ModsChange
+          TabOrder = 5
+        end
+        object TrackSaturation: TTrackBar
+          Left = 312
+          Height = 24
+          Top = 96
+          Width = 160
+          Max = 200
+          Position = 100
+          OnChange = ModsChange
+          TabOrder = 6
+        end
+        object CheckAutoContrast: TCheckBox
+          Left = 210
+          Height = 19
+          Top = 126
+          Width = 129
+          Caption = 'Auto contrast stretch'
+          TabOrder = 7
+          OnChange = ModsChange
+        end
+      end
+      object GroupBoxDetail: TTabSheet
+        Caption = 'Detail'
+        ClientHeight = 172
+        ClientWidth = 592
+        object LabelBlur: TLabel
+          Left = 8
+          Height = 15
+          Top = 10
+          Width = 21
+          Caption = 'Blur'
+        end
+        object LabelSharpen: TLabel
+          Left = 8
+          Height = 15
+          Top = 40
+          Width = 43
+          Caption = 'Sharpen'
+        end
+        object LabelClarity: TLabel
+          Left = 8
+          Height = 15
+          Top = 70
+          Width = 34
+          Caption = 'Clarity'
+        end
+        object LabelDenoise: TLabel
+          Left = 230
+          Height = 15
+          Top = 10
+          Width = 42
+          Caption = 'Denoise'
+        end
+        object LabelEdge: TLabel
+          Left = 230
+          Height = 15
+          Top = 40
+          Width = 26
+          Caption = 'Edge'
+        end
+        object LabelBilateral: TLabel
+          Left = 230
+          Height = 15
+          Top = 70
+          Width = 42
+          Caption = 'Bilateral'
+        end
+        object TrackBlur: TTrackBar
+          Left = 70
+          Height = 24
+          Top = 6
+          Width = 140
+          Max = 5
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 0
+        end
+        object TrackSharpen: TTrackBar
+          Left = 70
+          Height = 24
+          Top = 36
+          Width = 140
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 1
+        end
+        object TrackClarity: TTrackBar
+          Left = 70
+          Height = 24
+          Top = 66
+          Width = 140
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 2
+        end
+        object TrackDenoise: TTrackBar
+          Left = 290
+          Height = 24
+          Top = 6
+          Width = 140
+          Max = 3
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 3
+        end
+        object TrackEdge: TTrackBar
+          Left = 290
+          Height = 24
+          Top = 36
+          Width = 140
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 4
+        end
+        object TrackBilateral: TTrackBar
+          Left = 290
+          Height = 24
+          Top = 66
+          Width = 140
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 5
+        end
+        object LabelEdgeStyle: TLabel
+          Left = 230
+          Height = 15
+          Top = 100
+          Width = 54
+          Caption = 'Edge Style'
+        end
+        object ComboEdgeStyle: TComboBox
+          Left = 290
+          Height = 23
+          Top = 96
+          Width = 140
+          ItemHeight = 15
+          ItemIndex = 1
+          Items.Strings = (
+            'None'
+            'Sobel Enhance'
+            'Sobel Detect'
+            'Laplacian Detect'
+            'Canny Detect'
+            'DoG Detect'
+            'HED (Multi-scale)'
+            'XDoG Lines'
+            'Coherent Lines'
+            'Wavelet (Haar)'
+          )
+          TabOrder = 6
+          Text = 'Sobel Enhance'
+          OnChange = ModsChange
+        end
+        object LabelGuided: TLabel
+          Left = 8
+          Height = 15
+          Hint = 'Guided filter (edge-preserving smoothing on brightness)'
+          Top = 100
+          Width = 38
+          Caption = 'Guided'
+          ParentShowHint = False
+          ShowHint = True
+        end
+        object TrackGuided: TTrackBar
+          Left = 70
+          Height = 24
+          Hint = 'Guided filter amount (0=off, 100=strong)'
+          Top = 96
+          Width = 140
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 7
+        end
+        object LabelChromaDenoise: TLabel
+          Left = 230
+          Height = 15
+          Hint = 'Chroma-only denoise (smooths color noise, keeps brightness detail)'
+          Top = 130
+          Width = 63
+          Caption = 'Chroma DN'
+          ParentShowHint = False
+          ShowHint = True
+        end
+        object TrackChromaDenoise: TTrackBar
+          Left = 290
+          Height = 24
+          Hint = 'Chroma-only denoise amount (0=off, 100=strong)'
+          Top = 126
+          Width = 140
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 8
+        end
+      end
+      object GroupBoxFX: TTabSheet
+        Caption = 'FX'
+        ClientHeight = 172
+        ClientWidth = 592
+        object LabelQuantize: TLabel
+          Left = 8
+          Height = 15
+          Top = 10
+          Width = 34
+          Caption = 'Colors'
+        end
+        object ComboQuantize: TComboBox
+          Left = 70
+          Height = 23
+          Top = 8
+          Width = 160
+          ItemHeight = 15
+          ItemIndex = 0
+          Items.Strings = (
+            '256'
+            '128'
+            '64'
+            '32'
+            '16'
+            '8'
+            '4'
+          )
+          TabOrder = 0
+          Text = '256'
+          OnChange = ModsChange
+        end
+        object LabelDither: TLabel
+          Left = 8
+          Height = 15
+          Top = 42
+          Width = 32
+          Caption = 'Dither'
+        end
+        object ComboDither: TComboBox
+          Left = 70
+          Height = 23
+          Top = 40
+          Width = 160
+          ItemHeight = 15
+          ItemIndex = 0
+          Items.Strings = (
+            'None'
+            'Ordered 4x4'
+            'Floyd-Steinberg'
+          )
+          TabOrder = 1
+          Text = 'None'
+          OnChange = ModsChange
+        end
+        object LabelQuantMethod: TLabel
+          Left = 8
+          Height = 15
+          Top = 74
+          Width = 42
+          Caption = 'Method'
+        end
+        object ComboQuantMethod: TComboBox
+          Left = 70
+          Height = 23
+          Top = 72
+          Width = 160
+          ItemHeight = 15
+          ItemIndex = 1
+          Items.Strings = (
+            'None'
+            'Uniform RGB'
+            'Median Cut'
+            'Octree'
+            'DOS 16'
+            'Popularity'
+            'Wu'
+            'KMeans++'
+          )
+          TabOrder = 2
+          Text = 'Uniform RGB'
+          OnChange = ModsChange
+        end
+        object LabelDosBias: TLabel
+          Left = 250
+          Height = 15
+          Top = 10
+          Width = 47
+          Caption = 'DOS Bias'
+        end
+        object TrackDosBias: TTrackBar
+          Left = 320
+          Height = 24
+          Top = 6
+          Width = 240
+          Max = 100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 3
+        end
+      end
+      object GroupBoxAnsi: TTabSheet
+        Caption = 'ANSI Prep'
+        ClientHeight = 172
+        ClientWidth = 592
+        object LabelHue: TLabel
+          Left = 8
+          Height = 15
+          Top = 10
+          Width = 22
+          Caption = 'Hue'
+        end
+        object TrackHue: TTrackBar
+          Left = 70
+          Height = 24
+          Top = 6
+          Width = 220
+          Max = 180
+          Min = -180
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 0
+        end
+        object LabelMidContrast: TLabel
+          Left = 8
+          Height = 15
+          Top = 40
+          Width = 21
+          Caption = 'Mid'
+        end
+        object TrackMidContrast: TTrackBar
+          Left = 70
+          Height = 24
+          Top = 36
+          Width = 220
+          Max = 100
+          Min = -100
+          Position = 0
+          OnChange = ModsChange
+          TabOrder = 1
+        end
+      end
+    end
+    object SourceStatus: TStatusBar
+      Left = 8
+      Height = 23
+      Top = 744
+      Width = 600
+      Align = alNone
+      Panels = <      
+        item
+          Text = 'Original:'
+          Width = 120
+        end      
+        item
+          Text = 'Zoom:'
+          Width = 90
+        end      
+        item
+          Text = 'View:'
+          Width = 120
+        end      
+        item
+          Text = 'Ready'
+          Width = 120
+        end>
+      SimplePanel = False
+    end
+  end
+  object AnsiGroup: TGroupBox
+    Left = 644
+    Height = 780
+    Top = 56
+    Width = 744
+    Caption = 'ANSI Preview'
+    ClientHeight = 760
+    ClientWidth = 740
+    TabOrder = 2
+    object AnsiScroll: TScrollBox
+      Left = 8
+      Height = 512
+      Top = 20
+      Width = 688
+      HorzScrollBar.Page = 512
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Page = 512
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      ClientHeight = 512
+      ClientWidth = 688
+      TabOrder = 0
+      object AnsiImage: TImage
+        Left = 0
+        Height = 512
+        Top = 0
+        Width = 512
+        AutoSize = True
+        Center = True
+      end
+    end
+    object LabelAnsiCols: TLabel
+      Left = 8
+      Height = 15
+      Top = 540
+      Width = 23
+      Caption = 'Cols'
+    end
+    object SpinAnsiCols: TSpinEdit
+      Left = 60
+      Height = 23
+      Top = 536
+      Width = 70
+      MaxValue = 320
+      MinValue = 1
+      TabOrder = 1
+      Value = 80
+      OnChange = AnsiControlsChange
+    end
+    object LabelAnsiRows: TLabel
+      Left = 150
+      Height = 15
+      Top = 540
+      Width = 28
+      Caption = 'Rows'
+    end
+    object SpinAnsiRows: TSpinEdit
+      Left = 200
+      Height = 23
+      Top = 536
+      Width = 70
+      MaxValue = 320
+      MinValue = 1
+      TabOrder = 2
+      Value = 25
+      OnChange = AnsiControlsChange
+    end
+    object CheckAnsiKeepAspect: TCheckBox
+      Left = 300
+      Height = 19
+      Top = 538
+      Width = 81
+      Caption = 'Keep aspect'
+      Checked = True
+      State = cbChecked
+      TabOrder = 3
+      OnChange = AnsiControlsChange
+    end
+    object CheckAnsiAutoRows: TCheckBox
+      Left = 400
+      Height = 19
+      Top = 538
+      Width = 72
+      Caption = 'Auto rows'
+      Checked = True
+      State = cbChecked
+      TabOrder = 4
+      OnChange = AnsiControlsChange
+    end
+    object CheckAnsiMultiPass: TCheckBox
+      Left = 490
+      Height = 19
+      Top = 538
+      Width = 91
+      Caption = 'Multi-pass (4)'
+      TabOrder = 16
+      OnChange = AnsiControlsChange
+    end
+    object LabelAnsiStyle: TLabel
+      Left = 635
+      Height = 15
+      Top = 520
+      Width = 25
+      Caption = 'Style'
+      Enabled = False
+    end
+    object ComboAnsiStyle: TComboBox
+      Left = 635
+      Height = 23
+      Top = 536
+      Width = 95
+      Enabled = False
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'Custom'
+        'Scene'
+        'Toon'
+        'Death'
+        'Group'
+        'Tutorial'
+      )
+      TabOrder = 17
+      Text = 'Custom'
+      OnChange = AnsiControlsChange
+    end
+    object LabelAnsiSample: TLabel
+      Left = 8
+      Height = 15
+      Top = 572
+      Width = 39
+      Caption = 'Sample'
+    end
+    object ComboAnsiSample: TComboBox
+      Left = 60
+      Height = 23
+      Top = 568
+      Width = 90
+      ItemHeight = 15
+      ItemIndex = 2
+      Items.Strings = (
+        '2x2'
+        '2x3'
+        '2x4'
+      )
+      TabOrder = 5
+      Text = '2x4'
+      OnChange = AnsiControlsChange
+    end
+    object LabelAnsiMetric: TLabel
+      Left = 260
+      Height = 15
+      Top = 572
+      Width = 34
+      Caption = 'Metric'
+    end
+    object ComboAnsiMetric: TComboBox
+      Left = 310
+      Height = 23
+      Top = 568
+      Width = 140
+      ItemHeight = 15
+      ItemIndex = 1
+      Items.Strings = (
+        'RGB (fast)'
+        'Redmean'
+        'CIELAB (CIE76)'
+        'RGB Manhattan'
+        'Linear RGB (gamma)'
+        'CIELAB (CIE94)'
+        'CIELAB (CIEDE2000)'
+        'HSL Hue-first'
+        'HSL Weighted'
+      )
+      TabOrder = 6
+      Text = 'Redmean'
+      OnChange = AnsiControlsChange
+    end
+    object CheckICE: TCheckBox
+      Left = 160
+      Height = 19
+      Top = 570
+      Width = 53
+      Caption = 'iCE BG'
+      TabOrder = 7
+      OnChange = AnsiControlsChange
+    end
+    object BtnSaveAnsi: TButton
+      Left = 460
+      Height = 28
+      Top = 564
+      Width = 120
+      Caption = 'Save...'
+      TabOrder = 8
+      OnClick = BtnSaveAnsiClick
+    end
+    object BtnAnsiAdvanced: TButton
+      Left = 590
+      Height = 28
+      Top = 564
+      Width = 120
+      Caption = 'Advanced...'
+      TabOrder = 15
+      OnClick = BtnAnsiAdvancedClick
+    end
+    object CheckAnsiForceBg: TCheckBox
+      Left = 8
+      Height = 19
+      Top = 604
+      Width = 65
+      Caption = 'Force BG'
+      TabOrder = 9
+      OnChange = AnsiControlsChange
+    end
+    object ComboAnsiForceBg: TComboBox
+      Left = 90
+      Height = 23
+      Top = 602
+      Width = 140
+      Enabled = False
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        '0 Black'
+        '1 Blue'
+        '2 Green'
+        '3 Cyan'
+        '4 Red'
+        '5 Magenta'
+        '6 Brown'
+        '7 Light Gray'
+        '8 Dark Gray'
+        '9 Light Blue'
+        '10 Light Green'
+        '11 Light Cyan'
+        '12 Light Red'
+        '13 Light Magenta'
+        '14 Yellow'
+        '15 White'
+      )
+      TabOrder = 10
+      Text = '0 Black'
+      OnChange = AnsiControlsChange
+    end
+    object LabelAnsiDither: TLabel
+      Left = 260
+      Height = 15
+      Top = 606
+      Width = 32
+      Caption = 'Dither'
+    end
+    object ComboAnsiDither: TComboBox
+      Left = 310
+      Height = 23
+      Top = 602
+      Width = 140
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'None'
+        'Ordered (Bayer)'
+        'Floyd-Steinberg'
+      )
+      TabOrder = 11
+      Text = 'None'
+      OnChange = AnsiControlsChange
+    end
+    object LabelAnsiStability: TLabel
+      Left = 8
+      Height = 15
+      Top = 636
+      Width = 42
+      Caption = 'Stability'
+    end
+    object TrackAnsiStability: TTrackBar
+      Left = 90
+      Height = 24
+      Top = 632
+      Width = 140
+      Max = 100
+      Position = 0
+      OnChange = AnsiControlsChange
+      TabOrder = 12
+    end
+    object LabelAnsiEdgeBias: TLabel
+      Left = 8
+      Height = 15
+      Top = 666
+      Width = 50
+      Caption = 'Edge Bias'
+    end
+    object TrackAnsiEdgeBias: TTrackBar
+      Left = 90
+      Height = 24
+      Top = 662
+      Width = 140
+      Max = 100
+      Position = 50
+      OnChange = AnsiControlsChange
+      TabOrder = 13
+    end
+    object LabelAnsiDitherStrength: TLabel
+      Left = 260
+      Height = 15
+      Top = 636
+      Width = 35
+      Caption = 'Dith %'
+    end
+    object TrackAnsiDitherStrength: TTrackBar
+      Left = 310
+      Height = 24
+      Top = 632
+      Width = 270
+      Max = 100
+      Position = 40
+      OnChange = AnsiControlsChange
+      TabOrder = 14
+    end
+    object AnsiStatus: TStatusBar
+      Left = 8
+      Height = 23
+      Top = 744
+      Width = 724
+      Align = alNone
+      Panels = <      
+        item
+          Text = 'ANSI:'
+          Width = 140
+        end      
+        item
+          Text = 'Sample:'
+          Width = 110
+        end      
+        item
+          Text = 'iCE:'
+          Width = 80
+        end      
+        item
+          Text = 'Ready'
+          Width = 120
+        end>
+      SimplePanel = False
+    end
+  end
+  object ProcessTimer: TTimer
+    Enabled = False
+    Interval = 150
+    OnTimer = ProcessTimerTimer
+    Left = 960
+    Top = 60
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Filter = 'Image files|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tif;*.tiff|All files|*.*'
+    Options = [ofFileMustExist, ofEnableSizing]
+    Left = 840
+    Top = 12
+  end
+  object SaveDialogAnsi: TSaveDialog
+    DefaultExt = '.ans'
+    Filter = 'ANSI files|*.ans|All files|*.*'
+    Options = [ofOverwritePrompt, ofEnableSizing]
+    Left = 840
+    Top = 44
+  end
+end

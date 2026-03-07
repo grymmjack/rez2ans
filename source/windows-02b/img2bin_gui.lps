@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="img2bin_gui.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_styles.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="20" Y="8"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_palette.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="450"/>
+        <CursorPos X="12" Y="460"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_types.pas"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="413"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="mainform.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="652"/>
+        <CursorPos X="12" Y="652"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_colorbook.pas"/>
+        <EditorIndex Value="7"/>
+        <CursorPos X="6" Y="32"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_convert.pas"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="1891"/>
+        <CursorPos Y="1899"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_shaderlib.pas"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="23" Y="10"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_tronicshade.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="247"/>
+        <CursorPos X="23" Y="247"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img2bin_io.pas"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="140"/>
+        <CursorPos X="4" Y="141"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ansi_export_opts.pas"/>
+        <EditorIndex Value="5"/>
+        <CursorPos Y="6"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ansi_export_dialog.pas"/>
+        <EditorIndex Value="10"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3378" Column="5" TopLine="3377"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3379" TopLine="3371"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4888" TopLine="4870"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3375" TopLine="3371"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3378" Column="5" TopLine="3371"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3379" TopLine="3371"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3378" TopLine="3377"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4716" Column="5" TopLine="4710"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4476" TopLine="4467"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4894" Column="6" TopLine="4875"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3378" TopLine="3378"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3379" TopLine="3370"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4890" TopLine="4871"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="3225" TopLine="3211"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4890" Column="5" TopLine="4872"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4714" Column="5" TopLine="4708"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4540" Column="5" TopLine="4531"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4474" Column="5" TopLine="4465"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4475" Column="5" TopLine="4464"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4468" Column="5" TopLine="4465"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4351" Column="6" TopLine="4348"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4350" TopLine="4342"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="4351" Column="2" TopLine="4350"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="444" TopLine="437"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="448" Column="24" TopLine="438"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_types.pas"/>
+        <Caret TopLine="413"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_io.pas"/>
+        <Caret Line="141" Column="4" TopLine="140"/>
+      </Position>
+      <Position>
+        <Filename Value="img2bin_convert.pas"/>
+        <Caret Line="1899" TopLine="1891"/>
+      </Position>
+      <Position>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="6143" Column="3" TopLine="6123"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
